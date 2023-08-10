@@ -14,8 +14,8 @@ func User(w http.ResponseWriter, r *http.Request) {
 	
 	id := r.URL.Query().Get("id")
 	resp["id"] = id
-	name := strings.TrimPrefix(r.URL.Path, "/user/")
-	resp["name"] = name
+	currentPath := strings.TrimPrefix(r.URL.Path, "/user/")
+	resp["path"] = currentPath
 	jsonResp, err := json.Marshal(resp)
 	if err != nil {
 		fmt.Printf("Error happened in JSON marshal. Err: %s", err)
