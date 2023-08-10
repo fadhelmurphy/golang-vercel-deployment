@@ -43,5 +43,7 @@ func RunRoute()  *gin.Engine {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request){
-	RunRoute()
+	// Start REST Server on main thread
+	router := RunRoute()
+	router.ServeHTTP(w, r)
 }
