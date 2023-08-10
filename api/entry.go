@@ -8,10 +8,7 @@ import (
 
 // Bikin endpoint
 func GRoute(r *gin.RouterGroup){
-	r.GET("/admin", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "INI ENDPOINT ADMIN di Vercel bro")
-	})
-	r.GET("/user/:name", func(ctx *gin.Context) {
+	r.GET("/with-gin/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
 		// fmt.Println("Hello "+name+ "!")
@@ -26,7 +23,7 @@ func GRoute(r *gin.RouterGroup){
 		}
 	})
 	
-	r.GET("/user", func(ctx *gin.Context) {
+	r.GET("/with-gin", func(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{
 			"data": gin.H{
 				"id": ctx.Query("id"),
@@ -37,8 +34,8 @@ func GRoute(r *gin.RouterGroup){
 
 func RunRoute()  *gin.Engine {
 	router := gin.Default()
-	api := router.Group("/api")
-	GRoute(api)
+	// api := router.Group("/api")
+	GRoute(&gin.Default().RouterGroup)
 	return router
 }
 
