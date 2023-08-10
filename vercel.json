@@ -2,12 +2,12 @@
     "trailingSlash": false,
     "rewrites": [
         {
-            "source": "/api/with-gin/(.*)",
-            "destination": "/api/with-gin.go"
+            "source": "/v1/api/with-gin/(.*)",
+            "destination": "/v1/api/with-gin.go"
         },
         {
-            "source": "/api/user/(.*)",
-            "destination": "/api/user.go"
+            "source": "/v1/api/user/(.*)",
+            "destination": "/v1/api/user.go"
         }
     ],
     "build": {

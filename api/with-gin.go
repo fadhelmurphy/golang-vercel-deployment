@@ -14,7 +14,7 @@ func init(){
 	// Start REST Server on main thread
 	app = gin.New()
 	// app.Group("/")
-	app.GET("/api/with-gin/:name", func(ctx *gin.Context) {
+	app.GET("/v1/api/with-gin/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
 		// fmt.Println("Hello "+name+ "!")
@@ -29,7 +29,7 @@ func init(){
 		}
 	})
 	
-	app.GET("/api/with-gin", func(ctx *gin.Context) {
+	app.GET("/v1/api/with-gin", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
 			"data": gin.H{
 				"id": ctx.Query("id"),
