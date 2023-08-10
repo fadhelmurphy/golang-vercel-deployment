@@ -41,3 +41,7 @@ func RunRoute()  *gin.Engine {
 	GRoute(api)
 	return router
 }
+
+func Handler(w http.ResponseWriter, r *http.Request){
+	RunRoute()
+}
