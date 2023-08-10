@@ -3,11 +3,11 @@
     "rewrites": [
         {
             "source": "/v1/api/with-gin/(.*)",
-            "destination": "/v1/api/with-gin.go"
+            "destination": "/api/with-gin.go"
         },
         {
             "source": "/v1/api/user/(.*)",
-            "destination": "/v1/api/user.go"
+            "destination": "/api/user.go"
         }
     ],
     "build": {
