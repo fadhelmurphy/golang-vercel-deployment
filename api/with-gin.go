@@ -9,7 +9,7 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request){
 	// Start REST Server on main thread
 	router := gin.New()
-	// router.Group("/with-gin")
+	router.Group("/with-gin")
 	router.GET("/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")

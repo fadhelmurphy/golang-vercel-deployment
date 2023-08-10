@@ -4,6 +4,10 @@
         {
             "source": "/with-gin/(.*)",
             "destination": "/api/with-gin.go"
+        },
+        {
+            "source": "/api/user/(.*)",
+            "destination": "/api/user.go"
         }
     ],
     "build": {
