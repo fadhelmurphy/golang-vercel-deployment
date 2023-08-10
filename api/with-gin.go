@@ -6,11 +6,15 @@ import (
 	"fmt"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request){
+var (
+	app *gin.Engine
+)
+
+func init(){
 	// Start REST Server on main thread
-	router := gin.New()
-	router.Group("/with-gin")
-	router.GET("/:name", func(ctx *gin.Context) {
+	app = gin.New()
+	app.Group("/")
+	app.GET("/api/with-gin/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
 		// fmt.Println("Hello "+name+ "!")
@@ -25,12 +29,16 @@ func Handler(w http.ResponseWriter, r *http.Request){
 		}
 	})
 	
-	router.GET("/", func(ctx *gin.Context) {
+	app.GET("/api/with-gin", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
 			"data": gin.H{
 				"id": ctx.Query("id"),
 			},
 		})
 	})
-	router.ServeHTTP(w, r)
+}
+
+// entrypoint
+func Handler(w http.ResponseWriter, r *http.Request) {
+	app.ServeHTTP(w, r)
 }
