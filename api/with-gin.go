@@ -6,9 +6,10 @@ import (
 	"fmt"
 )
 
-// Bikin endpoint
-func GRoute(r *gin.RouterGroup){
-	r.GET("/with-gin/:name", func(ctx *gin.Context) {
+func Handler(w http.ResponseWriter, r *http.Request){
+	// Start REST Server on main thread
+	router := gin.New()
+	router.GET("/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
 		// fmt.Println("Hello "+name+ "!")
@@ -23,24 +24,12 @@ func GRoute(r *gin.RouterGroup){
 		}
 	})
 	
-	r.GET("/with-gin", func(ctx *gin.Context) {
-		ctx.JSON(400, gin.H{
-			"data": gin.H{
-				"id": ctx.Query("id"),
-			},
-		})
-	})
-}
-
-func RunRoute()  *gin.Engine {
-	router := gin.Default()
-	// api := router.Group("/api")
-	GRoute(&gin.Default().RouterGroup)
-	return router
-}
-
-func Handler(w http.ResponseWriter, r *http.Request){
-	// Start REST Server on main thread
-	router := RunRoute()
+	// router.GET("/", func(ctx *gin.Context) {
+	// 	ctx.JSON(200, gin.H{
+	// 		"data": gin.H{
+	// 			"id": ctx.Query("id"),
+	// 		},
+	// 	})
+	// })
 	router.ServeHTTP(w, r)
 }
