@@ -2,7 +2,7 @@
     "trailingSlash": false,
     "rewrites": [
         {
-            "source": "/with-gin/(.*)",
+            "source": "/api/with-gin/(.*)",
             "destination": "/api/with-gin.go"
         },
         {
