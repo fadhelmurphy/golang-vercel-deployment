@@ -14,6 +14,12 @@
             "destination": "/api/:path*"
         }
     ],
+    "redirects":[
+        {
+            "source": "/api/:path*",
+            "destination": "/v1/api/:path*"
+        }
+    ],
     "build": {
       "env": {
         "GO_BUILD_FLAGS": "-ldflags '-s -w'"
