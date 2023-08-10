@@ -13,7 +13,7 @@ var (
 func init(){
 	// Start REST Server on main thread
 	app = gin.New()
-	app.Group("/")
+	// app.Group("/")
 	app.GET("/api/with-gin/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
