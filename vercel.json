@@ -1,11 +1,5 @@
 {
     "trailingSlash": false,
-    "rewrites": [
-        {
-            "source": "/api(.*)",
-            "destination": "/api/entry.go"
-        }
-    ],
     "build": {
       "env": {
         "GO_BUILD_FLAGS": "-ldflags '-s -w'"
