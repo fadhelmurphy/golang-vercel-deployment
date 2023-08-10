@@ -9,7 +9,7 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request){
 	// Start REST Server on main thread
 	router := gin.New()
-	router.GET("/:name", func(ctx *gin.Context) {
+	router.GET("/with-gin/:name", func(ctx *gin.Context) {
 		
 		name := ctx.Param("name")
 		// fmt.Println("Hello "+name+ "!")
@@ -24,12 +24,12 @@ func Handler(w http.ResponseWriter, r *http.Request){
 		}
 	})
 	
-	// router.GET("/", func(ctx *gin.Context) {
-	// 	ctx.JSON(200, gin.H{
-	// 		"data": gin.H{
-	// 			"id": ctx.Query("id"),
-	// 		},
-	// 	})
-	// })
+	router.GET("/with-gin", func(ctx *gin.Context) {
+		ctx.JSON(200, gin.H{
+			"data": gin.H{
+				"id": ctx.Query("id"),
+			},
+		})
+	})
 	router.ServeHTTP(w, r)
 }
